@@ -1,11 +1,15 @@
 import PropTypes from 'prop-types';
 import { Item, Button, Span } from './ContactItem.styled';
+import { deleteContact } from 'redux/contactSlice';
+import { useDispatch } from 'react-redux';
 
-const ContactItem = ({ name, number, onClick}) => {
+const ContactItem = ({ name, number, id }) => {
+    const dispatch = useDispatch();
+
     return (
         <Item>
             <p  >{name} : <Span>{number}</Span></p>
-            <Button type='button' onClick={onClick}>Delete</Button>
+            <Button type='button' onClick={() => dispatch(deleteContact(id))}>Delete</Button>
         </Item>)
 };
 
